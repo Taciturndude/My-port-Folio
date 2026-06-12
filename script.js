@@ -31,7 +31,9 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+      entry.target.classList.remove('animate');
+      void entry.target.offsetWidth;
+      entry.target.classList.add('animate');
     }
   });
 }, { threshold: 0.1 });
